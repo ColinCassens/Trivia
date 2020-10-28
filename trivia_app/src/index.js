@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const fs = require('fs')
 var createReactClass = require('create-react-class');
 
 var element = React.createElement('h1', {className: 'greeting'}, 'Welcome to Trivia!')
+var questions = JSON.parse(fs.readFile("Questions.json"))
 
-class Demo1 extends Component {
+
+class quiz extends Component {
   constructor() {
     super();
     this.state = {
@@ -82,7 +85,7 @@ class Demo1 extends Component {
 }
 
 ReactDOM.render(
-  <Demo1 />,
+  <quiz />,
   document.getElementById('root'),
 );
 

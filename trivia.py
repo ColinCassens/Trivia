@@ -1,12 +1,11 @@
 from flask import Flask, request
 import json
 
-#@app.route('\Get Question')
+app = Flask(__name__)
 
+@app.route('/Get Question', methods=['GET'])
 def loadData():
     file = open('Questions.json')
     return json.load(file)
 
-
-if __name__ == "__main__":
-    print(loadData())
+app.run()
