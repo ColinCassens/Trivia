@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const fs = require('fs')
-var createReactClass = require('create-react-class');
+//var element = React.createElement('h1', {className: 'greeting'}, 'Welcome to Trivia!')
+var questions
+let request = new XMLHttpRequest()
+request.open("GET", "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple")
+request.send()
+request.onload = () =>{
+  console.log(request)
+  if(request.status === 200) {
+    questions = JSON.parse(request.response)
+    console.log(questions)
+  } else {
+    console.log('Error')
+  }
+}
+//var questions = JSON.parse(request.response)
+//console.log(questions[1])
 
-var element = React.createElement('h1', {className: 'greeting'}, 'Welcome to Trivia!')
-var questions = JSON.parse(fs.readFile("Questions.json"))
-
-
-class quiz extends Component {
+class Quiz extends Component {
   constructor() {
     super();
     this.state = {
@@ -85,7 +95,7 @@ class quiz extends Component {
 }
 
 ReactDOM.render(
-  <quiz />,
+  <Quiz />,
   document.getElementById('root'),
 );
 
