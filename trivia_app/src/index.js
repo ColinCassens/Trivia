@@ -128,21 +128,6 @@ class Questions extends Component{
         </div>
       )
     })
-    // return (
-    //   <div>
-    //     {this.questions.then(function(q){q.map(q =>{
-    //       const { question, correct_answer, incorrect_answers } = q
-    //       console.log(question)
-    //       return(
-    //         <Quiz
-    //           Q = {question}
-    //           CA = {correct_answer}
-    //           IAs = {incorrect_answers}
-    //         />
-    //       )
-    //     })})}
-    //   </div>
-    // )
   }
 }
 
