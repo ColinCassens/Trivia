@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 
 class Quiz extends Component {
@@ -107,7 +108,7 @@ class Quiz extends Component {
               </label>
             </div>
             <div>
-              Selected option is : {this.state.selectedOption}
+              Selected Answer is : {this.state.selectedOption}
             </div>
             <button className="btn btn-default" type="submit">
               Submit
@@ -176,15 +177,14 @@ class Questions extends Component{
   render() {
     const {questions, loading} = this.state
     return(
-      <div>
-        {loading ? <h2>Loading...</h2> : <Quiz questions = {questions}/>}
+      <div className="App">
+        <div className ="App-header">
+          {loading ? <h2>Loading...</h2> : <Quiz questions = {questions}/>}
+        </div>
       </div>      
     )
   }
 }
-
-let x = new Questions()
-console.log(x.questions)
 
 ReactDOM.render(
   <Questions />,
@@ -195,3 +195,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export default Questions
