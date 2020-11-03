@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.js';
+import './App.css';
 import reportWebVitals from './reportWebVitals';
 
 class Quiz extends Component {
@@ -177,17 +177,27 @@ class Questions extends Component{
   render() {
     const {questions, loading} = this.state
     return(
+      <div>
+        {loading ? <h2>Loading...</h2> : <Quiz questions = {questions}/>}
+      </div>  
+    )
+  }
+}
+
+class App extends Component{
+  render(){
+    return(
       <div className="App">
-        <div className ="App-header">
-          {loading ? <h2>Loading...</h2> : <Quiz questions = {questions}/>}
-        </div>
-      </div>      
+        <header className="App-header">
+          <Questions />
+        </header>
+      </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Questions />,
+  <App />,
   document.getElementById('root'),
 );
 
