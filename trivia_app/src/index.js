@@ -200,12 +200,95 @@ function LoadSpinner (){
   )
 }
 
+class Home extends Component{
+  constructor (){
+    super()
+    this.state = {
+      submited: false,
+      category: 'computers',
+      count: '5',
+      difficulty: 'Easy'
+    }
+    this.formSubmit = this.formSubmit.bind(this)
+  }
+
+  formSubmit(){ 
+    this.setState({
+      submited: true
+    })
+  }
+
+  init_screen (){
+    return(
+      <div className='App'>
+        <header className='App-header'>
+          <div>
+            <h1>Trivia!</h1>
+          </div>
+          <form onSubmit={this.formSubmit}>
+            <div className='home_container'>
+              <div className='option_boxes'>
+                <div>
+                  <label>Category</label>
+                  <br></br>
+                  <select name='category' id='category' onClick={this.onValueChange}>
+                    <option value='computers'>Computers</option>
+                    <option value='sports'>Sports</option>
+                    <option value='film'>Film</option>
+                    <option value='music '>Music</option>
+                  </select>
+                </div>
+                <div>
+                  <label># Questions</label>
+                  <br></br>
+                  <select name='count' id='count' onClick={this.onValueChange}>
+                    <option value='5'>5</option>
+                    <option value='10'>10</option>
+                    <option value='15'>15</option>
+                    <option value='20'>20</option>
+                  </select>
+                </div>
+              </div>
+              <div className='option_boxes'>
+                <label>Difficulty</label>
+                <br></br>
+                <select name='diff' id='diff' onClick={this.onValueChange}>
+                  <option value='Easy'>Easy</option>
+                  <option value='Medium'>Medium</option>
+                  <option value='Hard'>Hard</option>
+                </select>
+              </div>
+              <br></br>
+            </div>
+            <div>
+              <button className='btn btn-default' type='submit'>
+                Begin
+              </button>
+            </div>
+          </form>
+        </header>
+      </div>
+    )
+  }
+
+  render(){
+    const {submited} = this.state
+    return(
+      <div>
+        {submited ? <Questions /> : this.init_screen()}
+      </div>
+    )
+  }
+}
+
 class App extends Component{
   render(){
+    const H = new Home()
     return(
       <div className="App">
         <header className="App-header">
-          <Questions />
+          {/* {H.render()} */}
+          <Home />
         </header>
       </div>
     )
